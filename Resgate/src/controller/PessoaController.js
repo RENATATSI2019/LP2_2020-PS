@@ -1,30 +1,30 @@
 import Produto from '../models/Produto';
 
 export default class ContatoController {
-    async salvar(produto) {
-        const produtoSalvo = await Produto.create(produto);
-        return produtoSalvo;
+    async salvar(pessoa) {
+        const pessoaSalvo = await Pessoa.create(pessoa);
+        return pessoaSalvo;
     }
     async recuperarTodos() {
-        const produtos = await Produto.find();
-        return produtos;
+        const pessoas = await Pessoa.find();
+        return pessoas;
     }
     async recuperarPorNome (descricaoConsulta) {
-       const produtos =  await Produto.find({
+       const pessoas =  await Pessoa.find({
             descricao: {
                 '$regex': descricaoConsulta,
                 '$options': 'i'
             }
         });
-        return produtos;
+        return pessoas;
 
     }
     async recuperPeloId(id){
-       const produto =  await Produto.findById(id);
-       return produto;
+       const pessoa =  await Pessoa.findById(id);
+       return pessoa;
     }
     async remover(id){
-     const resposta =  await Produto.deleteOne({
+     const resposta =  await Pessoa.deleteOne({
             _id:id
         });
         return resposta;

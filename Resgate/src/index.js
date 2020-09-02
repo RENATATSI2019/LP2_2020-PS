@@ -1,29 +1,24 @@
 import * as db from './config/db';
-import produtoController from './controllers/ProdutoController';
-import Produto from './models/Produto';
+import PessoaController from './controller/PessoaController';
+import Pessoa from './model/Pessoa';
 
-const produtoCtlr = new produtoController;
+const pessoaCtlr = new PessoaController;
 
-let recuperarProdutos = async () => {
+let recuperarPessoas = async () => {
     db.conectarBD();
-     const produtos =await produtoCtlr.recuperarTodos();
-     produtos.forEach(produto=>console.log(produto));
-   const produto = new Produto({
-      descricao: 'Arroz',
-       quantidade: 2,
-       marca: 'Tio Lauterio'
+     const pessoas =await pessoaCtlr.recuperarTodos();
+     pessoas.forEach(produto=>console.log(pessoa));
+   const pessoa = new Pessoa({
+      nome: 'Maria',
+      areaDeAtuacao: 'TI',
+      telefone:'9999-9999',
+      endereco:'Rua 13 de maio, 123'
    });
-   const produtoSalvo = await produtoController.salvar(produto);
-   console.log(produtoSalvo);
-  //let produto  = await produtoCtlr.recuperarPeloId('5ea08af1f0715443ac827f7e');
-//produto.marca='Urbano';
-//const produtoAtualizado = await produtoCtlr.salvar(produto);
-//console.log(produtoAtualizado);
-
-//const produtos = await produtoCtlr.recuperarTodos();
-//console.log(produtos);
+   const pessoaSalvo = await PessoaController.salvar(pessoa);
+   console.log(pessoaSalvo);
 
 
 db.desconectarBD();
 }
-recuperarProdutos();
+recuperarPessoas();
+
